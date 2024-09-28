@@ -1,32 +1,33 @@
 package com.beam.project.beam.model;
 import java.time.LocalDateTime;
 
-@Entity
 public class Message {
-    @Id
-    private Long id;
-    private String username;
     private String content;
-    private LocalDateTime timestamp;
+    private String sender;
+    private MessageType type;
 
-    // Getters and setters...
-    public Long getId() {
-        return id;
+    public enum MessageType {
+        CHAT, JOIN, LEAVE
     }
-    public void setId(Long id) {
-        this.id = id;
-    }
-    public String getUsername() {
-        return username;
-    }
-    public void setUsername(String username) {
-        this.username = username;
-    }
+
+    // Getters and setters
     public String getContent() {
         return content;
     }
     public void setContent(String content) {
         this.content = content;
+    }
+    public String getSender() {
+        return sender;
+    }
+    public void setSender(String sender) {
+        this.sender = sender;
+    }
+    public MessageType getType() {
+        return type;
+    }
+    public void setType(MessageType type) {
+        this.type = type;
     }
     public LocalDateTime getTimestamp() {
         return timestamp;
@@ -34,4 +35,14 @@ public class Message {
     public void setTimestamp(LocalDateTime timestamp) {
         this.timestamp = timestamp;
     }
+    private LocalDateTime timestamp;
+    public Message() {
+    }
+    public Message(String content, String sender, MessageType type, LocalDateTime timestamp) {
+        this.content = content;
+        this.sender = sender;
+        this.type = type;
+        this.timestamp = timestamp;
+    }
 }
+
