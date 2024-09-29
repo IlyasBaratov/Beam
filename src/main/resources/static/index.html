@@ -11,6 +11,7 @@
             <ul id="messageList" class="list-group"></ul>
         </div>
         <div class="card-footer">
+            <input type="text" id="senderInput" class="form-control" placeholder="Enter your name...">
             <input type="text" id="messageInput" class="form-control" placeholder="Enter message...">
             <button id="sendButton" class="btn btn-primary">Send</button>
         </div>
@@ -34,10 +35,11 @@
     }
 
     function sendMessage() {
+        var senderName = document.getElementById("senderInput").value;
         var messageContent = document.getElementById("messageInput").value;
-        if(messageContent && stompClient) {
+        if (senderName && messageContent && stompClient) {
             var chatMessage = {
-                sender: "User",
+                sender: senderName,
                 content: messageContent,
                 type: 'CHAT'
             };
